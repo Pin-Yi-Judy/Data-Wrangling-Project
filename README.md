@@ -15,6 +15,7 @@ It’s no doubt that the US entertainment industry such as Hollywood has a signi
 - Using the date the blockbuster movies get released to make a connection between the blockbuster movies in the United States and international tourism.
 
 ## Process
+![image](https://github.com/Pin-Yi-Judy/Data-Wrangling-Project/blob/main/Images/Workflow%20Image.jpg)
 
 **Collect data**
 - Collect and filter raw datasets from various websites.
