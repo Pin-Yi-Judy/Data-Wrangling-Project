@@ -118,7 +118,9 @@ plt.title('Years vs. Total Inbound Tourists')
 # Display the plot
 plt.show()
 ```
-
+![image](https://github.com/Pin-Yi-Judy/Data-Wrangling-Project/blob/main/Images/Workflow%20Image.jpg)
+![image](https://github.com/Pin-Yi-Judy/Data-Wrangling-Project/blob/main/Images/Workflow%20Image.jpg)
+![image](https://github.com/Pin-Yi-Judy/Data-Wrangling-Project/blob/main/Images/Workflow%20Image.jpg)
 **Draw Conclusion**
 - Eyeball observes the correlation between movie ratings and tourist number
 
