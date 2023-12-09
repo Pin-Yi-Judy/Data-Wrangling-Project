@@ -31,19 +31,94 @@ It’s no doubt that the US entertainment industry such as Hollywood has a signi
 
 **Create new databases**
 - Create new tables with SQL in duckdb
-
+```
+%%sql
+DROP TABLE IF EXISTS countries;
+DROP SEQUENCE IF EXISTS seq_countries_id;
+CREATE SEQUENCE seq_countries_id START 1;
+CREATE TABLE countries (
+    id INT PRIMARY KEY DEFAULT NEXTVAL('seq_countries_id'),
+    name TEXT
+);
+```
 - Insert data from CSV files using Python
-<br>
+```
+with duckdb.connect('duckdb-file.db') as con:
+    
+    sql_find_country = """
+    SELECT id FROM countries 
+    WHERE name = $new_name
+    """
+    
+    sql_insert_country = """
+    INSERT INTO countries(name)
+    VALUES ($new_name) 
+    RETURNING id
+    """
 
-**Query Data**
+    with open('countries.csv') as csvfile:
+        myCSVReader = csv.DictReader(csvfile, delimiter=",", quotechar='"')
+        # {'id': '4', 'alpha2': 'af', 'alpha3': 'afg', 'name': 'Afghanistan'}
+        for row in myCSVReader:
+            param_dict = {'new_name': row['name']}
+            
+            # Check if the country already exists in the database
+            con.execute(sql_find_country, param_dict)
+            existing_id = con.fetchone()
+
+            if existing_id:
+                country_id = existing_id[0]
+            else:
+                # If the country doesn't exist, insert it into the database
+                con.execute(sql_insert_country, param_dict)
+                country_id = con.fetchone()[0]
+```
+**Query & Analysis Data**
 - Query data from SQL tables using Python
-<br>
-
-**Analysis Data**
 - Using Matplotlib to generate bar and line plot graph
-- Eyeball observes the correlation between movie ratings and tourist number
-<br>
+```
+years = []
+tourist_numbers = []
+
+with duckdb.connect('duckdb-file.db') as con:
+    # Execute query
+    sql_query = """
+    SELECT SUM(tourist_number), year
+    FROM tourist_information
+    JOIN movies
+        ON tourist_information.year_id = movies.year_id
+    JOIN country_names
+        ON tourist_information.country_name_id = country_names.id
+    JOIN countries
+        ON countries.id = country_names.country_id
+    JOIN years
+        ON tourist_information.year_id = years.id
+    WHERE countries.name = 'United States of America'
+    AND years.year BETWEEN 2009 AND 2019
+    GROUP BY year
+    ORDER BY year
+    """
+    result = con.execute(sql_query)
+
+    # Fetch and print the results
+    rows = result.fetchall()
+    for row in rows:
+        tourist_number, year = row
+        years.append(year)
+        tourist_numbers.append(tourist_number)
+
+# Create a bar plot
+plt.bar(years, tourist_numbers)
+
+# Add labels and title
+plt.xlabel('Years')
+plt.ylabel('Total Inbound Tourists')
+plt.title('Years vs. Total Inbound Tourists')
+
+# Display the plot
+plt.show()
+```
 
 **Draw Conclusion**
-
+- Eyeball observes the correlation between movie ratings and tourist number
 
