@@ -122,5 +122,7 @@ plt.show()
 ![image](https://github.com/Pin-Yi-Judy/Data-Wrangling-Project/blob/main/Images/Years%20vs%20Average%20Movie%20Ratings.jpg)
 ![image](https://github.com/Pin-Yi-Judy/Data-Wrangling-Project/blob/main/Images/Trend%20Analysis.jpg)
 **Draw Conclusion**
-- Eyeball observes the correlation between movie ratings and tourist number
-
+- Eyeball observes the correlation between movie ratings and tourist number<br><br>
+***Conclusion***<br>
+    We hypothesize that due to the significant global influence of the US entertainment industry, there could be a potential impact on tourism. If proven true, governments might explore utilizing the influence of the movie industry to enhance their tourism sector and the overall economy.<br>
+    A visual inspection reveals a temporary correlation between 2011 and 2014, with discernible congruence in the upward and downward trends. Nevertheless, there is a lack of compelling evidence substantiating a robust connection between movie ratings and tourist numbers. While mutual impact is potential, a more in-depth analysis is warranted to draw definitive conclusions.
