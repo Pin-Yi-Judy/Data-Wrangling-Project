@@ -16,7 +16,7 @@ It’s no doubt that the US entertainment industry such as Hollywood has a signi
 ## Process
 ![image](https://github.com/Pin-Yi-Judy/Data-Wrangling-Project/blob/main/Images/Workflow%20Image.jpg)
 
-**Collect data**
+**1. Collect data**
 - Collect and filter raw datasets from various websites.
 
 | Dataset | Resources Link |
@@ -28,8 +28,11 @@ It’s no doubt that the US entertainment industry such as Hollywood has a signi
 - Resave the datasets into CSV format.
 <br>
 
-**Create new databases**
-- Create new tables with SQL in duckdb
+**2. Create new databases**
+  ![image](https://github.com/Pin-Yi-Judy/Data-Wrangling-Project/blob/main/Images/Physical%20ER%20Diagram.jpg)
+
+- Create new tables with SQL in duckdb 
+_(Below is an example of creating a countries table)_
 ```
 %%sql
 DROP TABLE IF EXISTS countries;
@@ -41,6 +44,7 @@ CREATE TABLE countries (
 );
 ```
 - Insert data from CSV files using Python
+_(Below is an example of inserting data into the countries table)_
 ```
 with duckdb.connect('duckdb-file.db') as con:
     
@@ -72,7 +76,7 @@ with duckdb.connect('duckdb-file.db') as con:
                 con.execute(sql_insert_country, param_dict)
                 country_id = con.fetchone()[0]
 ```
-**Query & Analysis Data**
+**3. Query & Analysis Data**
 - Query data from SQL tables using Python
 - Using Matplotlib to generate bar and line plot graph
 ```
@@ -120,8 +124,8 @@ plt.show()
 ![image](https://github.com/Pin-Yi-Judy/Data-Wrangling-Project/blob/main/Images/Years%20v.s.%20Total%20Inbound%20Tourists.jpg)
 ![image](https://github.com/Pin-Yi-Judy/Data-Wrangling-Project/blob/main/Images/Years%20vs%20Average%20Movie%20Ratings.jpg)
 ![image](https://github.com/Pin-Yi-Judy/Data-Wrangling-Project/blob/main/Images/Trend%20Analysis.jpg)
-**Draw Conclusion**
-- Eyeball observes the correlation between movie ratings and tourist number<br>
+**4. Draw Conclusion**
+- Eyeball observes the correlation between movie ratings and tourist number<br><br>
 ***Conclusion***<br>
     >We hypothesize that due to the significant global influence of the US entertainment industry, there could be a potential impact on tourism. If proven true, governments might explore utilizing the influence of the movie industry to enhance their tourism sector and the overall economy.<br>
     A visual inspection reveals a temporary correlation between 2011 and 2014, with discernible congruence in the upward and downward trends. Nevertheless, there is a lack of compelling evidence substantiating a robust connection between movie ratings and tourist numbers. While mutual impact is potential, a more in-depth analysis is warranted to draw definitive conclusions.
