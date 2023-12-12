@@ -78,7 +78,7 @@ with duckdb.connect('duckdb-file.db') as con:
 ```
 **3. Query & Analysis Data**
 - Query data from SQL tables using Python
-- Using Matplotlib to generate bar and line plot graph
+- Using Matplotlib to generate bar and line plot graph _(Below is an example of creating a bar plot o represent the average inbound tourist numbers per year)_
 ```
 years = []
 tourist_numbers = []
