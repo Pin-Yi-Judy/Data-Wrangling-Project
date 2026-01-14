@@ -1,4 +1,5 @@
-# Data Wrangling Project
+# Exploring the Influence of U.S. Movies on International Tourists 
+
 This is a project assignment for UT MSIS course INF 385T _Data Wrangling_  with Prof James Howison.
 <br>This project allowed me an opportunity to utilize `SQL` and `Python`.
 <br>This project is collaborated with Philo Lin.
